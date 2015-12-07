@@ -46,18 +46,14 @@ http {
       server_name _;
     <% end %>
 
-    <% if ENV["BASE_URI"] %>
-      ember_base_uri <%= ENV["BASE_URI"] %>
-    <% end %>
-
     listen <%= ENV["PORT"] %>;
     keepalive_timeout 5;
     root dist;
     index index.html;
     port_in_redirect off;o
-    #if ($ember_base_uri) {
-    #  rewrite ^/$ember_base_uri/(.*) /$1;
-    #}
+    <% if ENV["BASE_URI"] %>
+    rewrite ^/<%= ENV['BASE_URI'] %>/(.*) /$1;
+    <% end %>
 
     <% if ENV["CLIENT_MAX_BODY_SIZE"] %>
       client_max_body_size <%= ENV["CLIENT_MAX_BODY_SIZE"] %>;
