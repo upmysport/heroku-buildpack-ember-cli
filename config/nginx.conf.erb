@@ -51,8 +51,8 @@ http {
     root dist;
     index index.html;
     port_in_redirect off;o
-    <% if ENV["BASE_URI"] %>
-    rewrite ^/<%= ENV['BASE_URI'] %>/(.*) /$1;
+    <% if ENV["EMBER_BASE_URI"] %>
+    rewrite ^/<%= ENV['EMBER_BASE_URI'] %>/(.*) /$1;
     <% end %>
 
     <% if ENV["CLIENT_MAX_BODY_SIZE"] %>
