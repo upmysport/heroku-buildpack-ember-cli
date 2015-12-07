@@ -50,7 +50,7 @@ http {
     keepalive_timeout 5;
     root dist;
     index index.html;
-    port_in_redirect off;o
+    port_in_redirect off;
     <% if ENV["EMBER_BASE_URI"] %>
     rewrite ^/<%= ENV['EMBER_BASE_URI'] %>/(.*) /$1;
     <% end %>
